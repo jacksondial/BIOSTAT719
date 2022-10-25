@@ -1,0 +1,66 @@
+---
+title: "719HW6"
+format: html
+editor: visual
+---
+
+## Question1
+
+### A
+
+The saturated model has 6 parameters. 1 from the intercept, 1 from the treatment, 2 from the disease, and 2 from the interaction of disease and treatment.
+
+### B
+
+Model 1: $logit(p) = \beta_0 + \beta_1 * T$
+Model 2: $logit(p) = \beta_0 + \beta_1 * D$
+Model 3: $logit(p) = \beta_0 + (\beta_1*T) + (\beta_2 *D) + (\beta_3 * T*D)$
+
+### C
+
+Model 1 is suitable to answer question 1.
+Model 2 is suitable to answer question 2.
+Model 3 is suitable to answer question 3.
+
+### D
+
+#### Build df
+
+```{r}
+y <- c(51, 67, 42, 143, 97, 40)
+n <- c(200, 158, 89, 315, 263, 75)
+severity <- rep(c(0,1,2), 2)
+treatment <- c(rep(0, 3), rep(1, 3))
+
+df <- cbind.data.frame(y, n, severity, treatment)
+df
+```
+#### Fit models
+
+```{r}
+mod_1 <- glm(cbind(y, n-y) ~ treatment, data = df, family = binomial(link = "logit"))
+mod_2 <- glm(cbind(y, n-y) ~ severity, data = df, family = binomial(link = "logit"))
+mod_3 <- glm(cbind(y, n-y) ~ treatment*severity, data = df, family = binomial(link = "logit"))
+```
+
+### E
+
+DF of the null deviance: `r mod_1$df.null`
+DF of the residual deviance for Model 1: `r mod_1$df.residual`
+DF of the residual deviance for Model 2: `r mod_2$df.residual`
+DF of the residual deviance for Model 3: `r mod_3$df.residual`
+
+### F
+
+```{r}
+
+```
+
+
+### G
+
+### H
+
+### I
+
+### J
