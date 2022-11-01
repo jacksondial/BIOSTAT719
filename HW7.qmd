@@ -1,0 +1,56 @@
+---
+title: "HW7"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# Question 1
+
+```{r Libraries}
+library(tidyverse)
+```
+
+
+```{r ReadData}
+dat <- read_csv("table9_13.csv")
+```
+
+```{r Contglm}
+fit1_cont <- glm(cbind(y, n-y) ~ ., data = dat, family = binomial(link = "logit"))
+```
+
+```{r Catglm}
+dat$CAR <- as.factor(dat$CAR)
+dat$AGE <- as.factor(dat$AGE)
+dat$DIST <- as.factor(dat$DIST)
+fit1_cont <- glm(cbind(y, n-y) ~ ., data = dat, family = binomial(link = "logit"))
+```
+
+```{r LRT}
+anova(fit1_cat, fit1_cont, test = "LRT")
+```
+
+The categorical model fits the data better since p < .05.
+
+```{r CatglmSum}
+sum_fit1cat <- summary(fit1_cat)
+sum_fit1cat
+```
+
+$$
+logit(p) = \beta_0 + \beta_1
+$$
+
+A 1-unit increase in Age (changing from age group 1 to age group 2, for example) results in a `r round(sum_fit1cat$coefficients[3,1],4)` increase in the log odds of the outcome, or a `r round(exp(sum_fit1cat$coefficients[3,1]),4)` increase in the outcome. This actually results in a decrease of the odds of the outcome by 19%.
+
+
+
+
+
+
+
+
+
+
