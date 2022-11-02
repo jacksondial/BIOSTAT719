@@ -17,40 +17,134 @@ library(tidyverse)
 dat <- read_csv("table9_13.csv")
 ```
 
+## A
+
 ```{r Contglm}
 fit1_cont <- glm(cbind(y, n-y) ~ ., data = dat, family = binomial(link = "logit"))
 ```
 
 ```{r Catglm}
-dat$CAR <- as.factor(dat$CAR)
-dat$AGE <- as.factor(dat$AGE)
-dat$DIST <- as.factor(dat$DIST)
-fit1_cont <- glm(cbind(y, n-y) ~ ., data = dat, family = binomial(link = "logit"))
+dat2 <- dat
+dat2$CAR <- as.factor(dat2$CAR)
+dat2$AGE <- as.factor(dat2$AGE)
+dat2$DIST <- as.factor(dat2$DIST)
+fit1_cat <- glm(cbind(y, n-y) ~ ., data = dat2, family = binomial(link = "logit"))
 ```
 
 ```{r LRT}
-anova(fit1_cat, fit1_cont, test = "LRT")
+anova(fit1_cont, fit1_cat, test = "LRT")
 ```
 
-The categorical model fits the data better since p < .05.
+The continuous model fits the data better since p > .05.
 
 ```{r CatglmSum}
-sum_fit1cat <- summary(fit1_cat)
-sum_fit1cat
+sum_fit1cont <- summary(fit1_cont)
+sum_fit1cont
+```
+
+## B
+
+$$
+logit(p) = \beta_0 + \beta_1\text{CAR}+\beta_2\text{AGE}+\beta_3\text{DIST} + \epsilon
+$$
+
+$$
+logit(p)=-1.667+0.232(\text{CAR})-.210(\text{AGE})+.259(\text{DIST})
+$$
+
+A 1-unit increase in Age (changing from age group 1 to age group 2, for example) results in a `r round(sum_fit1cont$coefficients[3,1],4)` increase in the log odds of the outcome, or a `r round(exp(sum_fit1cont$coefficients[3,1]),4)` factor increase in the odds of the outcome. This actually results in a decrease of the odds of the outcome by 19%.
+
+## C
+
+Pattern 1: Car group 4 and age group 3 and district 1
+Pattern 2: Car group 4 and age group 1 and district 0
+
+$$
+\frac{exp(\beta_0+4\beta_1+3\beta_2+\beta_3)}{exp(\beta_0+4\beta_1+\beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.210)+.259) = 0.8513
+$$
+```{r CIforOR}
+L <- cbind(c(0,0, 2, 1))
+Lb <- t(L)%*%fit1_cont$coef
+varLb <- t(L)%*%sum_fit1cont$cov.unscaled%*%L
+CILb <- Lb + c(-1, 1)*qnorm(1-.05/2)*sqrt(varLb)
+exp(CILb)
+```
+
+The odds of the outcome are 0.8513 times greater in pattern 1 than in pattern 2. This actually means the odds of the outcome are smaller in pattern 1 than in pattern 2, by approximately 15%. The confidence interval does not contain 1, so it is fair to say that the true odds ratio is within those bounds, with 95% confidence.
+
+## D
+
+```{r PoissonReg}
+fit1_pois <- glm(y ~ CAR + AGE + DIST + offset(log(n)), family = poisson(link = "log"), data = dat)
+sum_fit1_pois <- summary(fit1_pois)
+sum_fit1_pois
 ```
 
 $$
-logit(p) = \beta_0 + \beta_1
+log(\mu_i) = \beta_0+\beta_1(CAR2)+\beta_2(CAR3)+\beta_3(CAR4)+\beta_4(AGE2)+\beta_5(AGE3)+\beta_6(AGE4)+\beta_7(DIST1)+\epsilon
+$$
+$\beta_4$ is associated with a $exp(0.56769) = 1.764187$ factor increase in the RR of an individual in the AGE2 group, compared to the baseline of AGE==1, all other variables held constant. This is equivalent to a 76% increase.
+
+$\beta_5$ is associated with a $exp(0.68217) = 1.978166$ factor increase in the RR of an individual in the AGE3 group, compared to the baseline of AGE==1, all other variables held constant. This is equivalent to a 98% increase.
+
+$\beta_6$ is associated with a $exp(2.19916) = 9.017436$ factor increase in the RR of an individual in the AGE4 group, compared to the baseline of AGE==1, all other variables held constant. This is equivalent to a 802% increase.
+
+$\beta_7$ is associated with a $exp(-2.15937) = 0.1153978$ factor increase in the RR of an individual in the DIST1 group, compared to the baseline of DIST==0, all other variables held constant. This is actually a decrease in the RR by approximately 88%.
+
+## E
+
+```{r SumCont}
+sum_fit1cont
+```
+
+```{r SumPois}
+sum_fit1_pois
+```
+
+The logistic model seems to fit better, and it is not possible to do a LRT test because the models are not the same type of model, i.e. 
+
+```{r}
+anova(fit1_cont, fit1_pois, test = "LRT")
+```
+
+## F
+
+```{r}
+poi.pred <- fitted.values(fit1_pois)
+poi.pred.unit <- poi.pred / dat$n
+
+log.pred <- fitted.values(fit1_cont)
+# poi.pred.unit <- log.pred
+
+plot(1:32, dat$y / dat$n, pch=19, xlab="Covariate patterns", ylab="Y", bty="L")
+
+points(1:32, poi.pred.unit, pch=19, col=2)
+points(1:32, log.pred, pch = 19, col = 3)
+
+legend("topleft", c("Observed", "Poisson", "Log"), col=c(1,2,3), pch=c(19,19, 19))
+```
+
+I observe a general okay fit, but I would not call it necessarily good. The Poisson and Log values are pretty similar. The value at x=29 for observed is 0, which does raise some concern but the value is 0 in the data, so it is not an issue with the calculation.
+
+## G
+
+Pattern 1: Car group 4 and age group 3 and district 1
+Pattern 2: Car group 4 and age group 1 and district 0
+
+$$
+log(\mu_i) = \beta_0+\beta_1(CAR2)+\beta_2(CAR3)+\beta_3(CAR4)+\beta_4(AGE2)+\beta_5(AGE3)+\beta_6(AGE4)+\beta_7(DIST1)+\epsilon
 $$
 
-A 1-unit increase in Age (changing from age group 1 to age group 2, for example) results in a `r round(sum_fit1cat$coefficients[3,1],4)` increase in the log odds of the outcome, or a `r round(exp(sum_fit1cat$coefficients[3,1]),4)` increase in the outcome. This actually results in a decrease of the odds of the outcome by 19%.
+$$
+\frac{\beta_0+\beta_3+\beta_5+\beta_7}{\beta_0 + \beta_3} = \beta_5 + \beta_7
+$$
 
 
 
+```{r}
+sum_fit1_pois$coefficients
 
 
-
-
-
+```
 
 
