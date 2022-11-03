@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>HW7</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="HW7_files/libs/clipboard/clipboard.min.js"></script>
+<script src="HW7_files/libs/quarto-html/quarto.js"></script>
+<script src="HW7_files/libs/quarto-html/popper.min.js"></script>
+<script src="HW7_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="HW7_files/libs/quarto-html/anchor.min.js"></script>
+<link href="HW7_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="HW7_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="HW7_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="HW7_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="HW7_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">HW7</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="question-1" class="level1">
+<h1>Question 1</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>v ggplot2 3.3.5     v purrr   0.3.4
+v tibble  3.1.4     v dplyr   1.0.7
+v tidyr   1.1.3     v stringr 1.4.0
+v readr   2.0.1     v forcats 0.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"table9_13.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 32 Columns: 5-- Column specification --------------------------------------------------------
+Delimiter: ","
+dbl (5): CAR, AGE, DIST, y, n
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">A</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit1_cont <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> ., <span class="at">data =</span> dat, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> dat</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dat2<span class="sc">$</span>CAR <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dat2<span class="sc">$</span>CAR)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dat2<span class="sc">$</span>AGE <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dat2<span class="sc">$</span>AGE)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>dat2<span class="sc">$</span>DIST <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dat2<span class="sc">$</span>DIST)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>fit1_cat <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> ., <span class="at">data =</span> dat2, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit1_cont, fit1_cat, <span class="at">test =</span> <span class="st">"LRT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: cbind(y, n - y) ~ CAR + AGE + DIST
+Model 2: cbind(y, n - y) ~ CAR + AGE + DIST
+  Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)
+1        28     30.086                     
+2        24     28.844  4    1.242   0.8711</code></pre>
+</div>
+</div>
+<p>The continuous model fits the data better since p &gt; .05.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sum_fit1cont <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit1_cont)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sum_fit1cont</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = cbind(y, n - y) ~ ., family = binomial(link = "logit"), 
+    data = dat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.8980  -0.6354  -0.1307   0.3749   2.0276  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -1.66749    0.08748 -19.061  &lt; 2e-16 ***
+CAR          0.23168    0.02266  10.225  &lt; 2e-16 ***
+AGE         -0.20967    0.02040 -10.278  &lt; 2e-16 ***
+DIST         0.25891    0.06420   4.033  5.5e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 244.327  on 31  degrees of freedom
+Residual deviance:  30.086  on 28  degrees of freedom
+AIC: 200.01
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+</section>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">B</h2>
+<p><span class="math display">\[
+logit(p) = \beta_0 + \beta_1\text{CAR}+\beta_2\text{AGE}+\beta_3\text{DIST} + \epsilon
+\]</span></p>
+<p><span class="math display">\[
+logit(p)=-1.667+0.232(\text{CAR})-.210(\text{AGE})+.259(\text{DIST})
+\]</span></p>
+<p>A 1-unit increase in Age (changing from age group 1 to age group 2, for example) results in a -0.2097 increase in the log odds of the outcome, or a 0.8109 factor increase in the odds of the outcome. This actually results in a decrease of the odds of the outcome by 19%.</p>
+</section>
+<section id="c" class="level2">
+<h2 class="anchored" data-anchor-id="c">C</h2>
+<p>Pattern 1: Car group 4 and age group 3 and district 1 Pattern 2: Car group 4 and age group 1 and district 0</p>
+<p><span class="math display">\[
+\frac{exp(\beta_0+4\beta_1+3\beta_2+\beta_3)}{exp(\beta_0+4\beta_1+\beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.210)+.259) = 0.8513
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Lb <span class="ot">&lt;-</span> <span class="fu">t</span>(L)<span class="sc">%*%</span>fit1_cont<span class="sc">$</span>coef</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>varLb <span class="ot">&lt;-</span> <span class="fu">t</span>(L)<span class="sc">%*%</span>sum_fit1cont<span class="sc">$</span>cov.unscaled<span class="sc">%*%</span>L</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>CILb <span class="ot">&lt;-</span> Lb <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="fl">-.05</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">sqrt</span>(varLb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in c(-1, 1) * qnorm(1 - 0.05/2) * sqrt(varLb): Recycling array of length 1 in vector-array arithmetic is deprecated.
+  Use c() or as.vector() instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in Lb + c(-1, 1) * qnorm(1 - 0.05/2) * sqrt(varLb): Recycling array of length 1 in array-vector arithmetic is deprecated.
+  Use c() or as.vector() instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(CILb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7354338 0.9865452</code></pre>
+</div>
+</div>
+<p>The odds of the outcome are 0.8513 times greater in pattern 1 than in pattern 2. This actually means the odds of the outcome are smaller in pattern 1 than in pattern 2, by approximately 15%. The confidence interval does not contain 1, so it is fair to say that the true odds ratio is within those bounds, with 95% confidence.</p>
+</section>
+<section id="d" class="level2">
+<h2 class="anchored" data-anchor-id="d">D</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fit1_pois <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> CAR <span class="sc">+</span> AGE <span class="sc">+</span> DIST <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(n)), <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), <span class="at">data =</span> dat)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sum_fit1_pois <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit1_pois)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>sum_fit1_pois</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = y ~ CAR + AGE + DIST + offset(log(n)), family = poisson(link = "log"), 
+    data = dat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.7248  -0.5681  -0.1679   0.3384   1.9126  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -1.85253    0.07990 -23.185  &lt; 2e-16 ***
+CAR          0.19777    0.02080   9.507  &lt; 2e-16 ***
+AGE         -0.17674    0.01849  -9.559  &lt; 2e-16 ***
+DIST         0.21865    0.05853   3.736 0.000187 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 207.833  on 31  degrees of freedom
+Residual deviance:  24.685  on 28  degrees of freedom
+AIC: 201.05
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<p><span class="math display">\[
+log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
+\]</span></p>
+<p><span class="math inline">\(\beta_2\)</span> is associated with a <span class="math inline">\(exp(-.17674) = 0.8379976\)</span> factor increase in the RR of the outcome when AGE increases by 1. This is better interpreted by a ~18% decrease in the RR.</p>
+<p><span class="math inline">\(\beta_3\)</span> is associated with a <span class="math inline">\(exp(.21865) = 1.244396\)</span> factor increase in the RR of the outcome when DIST increases by 1. This is also interpreted as a 24% increase in the RR.</p>
+</section>
+<section id="e" class="level2">
+<h2 class="anchored" data-anchor-id="e">E</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sum_fit1cont</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = cbind(y, n - y) ~ ., family = binomial(link = "logit"), 
+    data = dat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.8980  -0.6354  -0.1307   0.3749   2.0276  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -1.66749    0.08748 -19.061  &lt; 2e-16 ***
+CAR          0.23168    0.02266  10.225  &lt; 2e-16 ***
+AGE         -0.20967    0.02040 -10.278  &lt; 2e-16 ***
+DIST         0.25891    0.06420   4.033  5.5e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 244.327  on 31  degrees of freedom
+Residual deviance:  30.086  on 28  degrees of freedom
+AIC: 200.01
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sum_fit1_pois</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = y ~ CAR + AGE + DIST + offset(log(n)), family = poisson(link = "log"), 
+    data = dat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.7248  -0.5681  -0.1679   0.3384   1.9126  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -1.85253    0.07990 -23.185  &lt; 2e-16 ***
+CAR          0.19777    0.02080   9.507  &lt; 2e-16 ***
+AGE         -0.17674    0.01849  -9.559  &lt; 2e-16 ***
+DIST         0.21865    0.05853   3.736 0.000187 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 207.833  on 31  degrees of freedom
+Residual deviance:  24.685  on 28  degrees of freedom
+AIC: 201.05
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<p>The logistic model seems to fit better, and it is not possible to do a LRT test because the models are not the same type of model, i.e.&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit1_cont, fit1_pois, <span class="at">test =</span> <span class="st">"LRT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in anova.glmlist(c(list(object), dotargs), dispersion = dispersion, :
+models with response '"y"' removed because response differs from model 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: cbind(y, n - y)
+
+Terms added sequentially (first to last)
+
+     Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    
+NULL                    31    244.327              
+CAR   1  100.958        30    143.370 &lt; 2.2e-16 ***
+AGE   1   97.754        29     45.616 &lt; 2.2e-16 ***
+DIST  1   15.530        28     30.086 8.121e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="f" class="level2">
+<h2 class="anchored" data-anchor-id="f">F</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>poi.pred <span class="ot">&lt;-</span> <span class="fu">fitted.values</span>(fit1_pois)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>poi.pred.unit <span class="ot">&lt;-</span> poi.pred <span class="sc">/</span> dat<span class="sc">$</span>n</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>log.pred <span class="ot">&lt;-</span> <span class="fu">fitted.values</span>(fit1_cont)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># poi.pred.unit &lt;- log.pred</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, dat<span class="sc">$</span>y <span class="sc">/</span> dat<span class="sc">$</span>n, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">xlab=</span><span class="st">"Covariate patterns"</span>, <span class="at">ylab=</span><span class="st">"Y"</span>, <span class="at">bty=</span><span class="st">"L"</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, poi.pred.unit, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, log.pred, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="dv">3</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="fu">c</span>(<span class="st">"Observed"</span>, <span class="st">"Poisson"</span>, <span class="st">"Log"</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">19</span>, <span class="dv">19</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW7_files/figure-html/PoisLogPlot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>I observe a general okay fit of the Poisson and Log to the observed. The Poisson and Log values are pretty similar. The value at x=29 for observed is 0, which does raise some concern but the value is 0 in the data that we were given.</p>
+</section>
+<section id="g" class="level2">
+<h2 class="anchored" data-anchor-id="g">G</h2>
+<p>Pattern 1: Car group 4 and age group 3 and district 1 Pattern 2: Car group 4 and age group 1 and district 0</p>
+<p><span class="math display">\[
+log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
+\]</span></p>
+<p><span class="math display">\[
+\frac{exp(\beta_0 + 4\beta_1 + 3\beta_2 + \beta_3)}{exp(\beta_0 + 4\beta_1 + \beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.17674) + .21865) = 0.8738645
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">4</span>,<span class="at">byrow=</span>T)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>lrr <span class="ot">&lt;-</span> <span class="fu">t</span>(L) <span class="sc">%*%</span> <span class="fu">as.matrix</span>(fit1_pois<span class="sc">$</span>coef)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>rr <span class="ot">&lt;-</span> <span class="fu">exp</span>(lrr)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>covmat <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit1_pois)<span class="sc">$</span>cov.unscaled</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>var.lrr <span class="ot">&lt;-</span> <span class="fu">t</span>(L)<span class="sc">%*%</span>covmat<span class="sc">%*%</span>L</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>ci.lrr <span class="ot">&lt;-</span> <span class="fu">c</span>(lrr<span class="sc">-</span>(<span class="fl">1.96</span><span class="sc">*</span><span class="fu">sqrt</span>(var.lrr)), lrr<span class="sc">+</span>(<span class="fl">1.96</span><span class="sc">*</span><span class="fu">sqrt</span>(var.lrr)))</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>ci.rr <span class="ot">&lt;-</span> <span class="fu">exp</span>(ci.lrr)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(rr, ci.rr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8738614 0.7643789 0.9990250</code></pre>
+</div>
+</div>
+<p>The relative risk is .87, which means that pattern 1 has 0.87 times higher risk of outcome than pattern 2. This actually means that there is greater risk in pattern 2, by approximately 13%. The Ci does not contain 1, though it is VERY close. But, since it does not contain 1, the above mentioned interpretation is appropriate. The values are different from part c, and this is due to the offset.</p>
+</section>
+<section id="h" class="level2">
+<h2 class="anchored" data-anchor-id="h">H</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fit1_quasi <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> CAR <span class="sc">+</span> AGE <span class="sc">+</span> DIST <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(n)), <span class="at">data =</span> dat, <span class="at">family =</span> quasipoisson)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1_quasi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = y ~ CAR + AGE + DIST + offset(log(n)), family = quasipoisson, 
+    data = dat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.7248  -0.5681  -0.1679   0.3384   1.9126  
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.85253    0.07320 -25.309  &lt; 2e-16 ***
+CAR          0.19777    0.01906  10.378 4.22e-11 ***
+AGE         -0.17674    0.01694 -10.435 3.73e-11 ***
+DIST         0.21865    0.05362   4.078 0.000341 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for quasipoisson family taken to be 0.8392002)
+
+    Null deviance: 207.833  on 31  degrees of freedom
+Residual deviance:  24.685  on 28  degrees of freedom
+AIC: NA
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<p>The dispersion parameter was taken to be 0.8392, which is less than 1, so we have underdispersion.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

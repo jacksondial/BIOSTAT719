@@ -101,13 +101,13 @@ sum_fit1_pois
 
 The logistic model seems to fit better, and it is not possible to do a LRT test because the models are not the same type of model, i.e. 
 
-```{r}
+```{r LRT2}
 anova(fit1_cont, fit1_pois, test = "LRT")
 ```
 
 ## F
 
-```{r}
+```{r PoisLogPlot}
 poi.pred <- fitted.values(fit1_pois)
 poi.pred.unit <- poi.pred / dat$n
 
@@ -122,27 +122,22 @@ points(1:32, log.pred, pch = 19, col = 3)
 legend("topleft", c("Observed", "Poisson", "Log"), col=c(1,2,3), pch=c(19,19, 19))
 ```
 
-I observe a general okay fit, but I would not call it necessarily good. The Poisson and Log values are pretty similar. The value at x=29 for observed is 0, which does raise some concern but the value is 0 in the data, so it is not an issue with the calculation.
+I observe a general okay fit of the Poisson and Log to the observed. The Poisson and Log values are pretty similar. The value at x=29 for observed is 0, which does raise some concern but the value is 0 in the data that we were given.
 
 ## G
 
 Pattern 1: Car group 4 and age group 3 and district 1
 Pattern 2: Car group 4 and age group 1 and district 0
 
-
 $$
 log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
 $$
-
-
 
 $$
 \frac{exp(\beta_0 + 4\beta_1 + 3\beta_2 + \beta_3)}{exp(\beta_0 + 4\beta_1 + \beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.17674) + .21865) = 0.8738645
 $$
 
-
-
-```{r}
+```{r PoisCI}
 L <- matrix(c(0,0,2,1), nrow=4,byrow=T)
 lrr <- t(L) %*% as.matrix(fit1_pois$coef)
 rr <- exp(lrr)
@@ -153,11 +148,11 @@ ci.rr <- exp(ci.lrr)
 c(rr, ci.rr)
 ```
 
-The relative risk is .87, which means that pattern 1 has 0.87 times higher risk of outcome than pattern 2. This actually means that there is greater risk in pattern 2, by approximately 13%. The Ci does not contain 1, though it is VERY close. But, since it does not contain 1, the above mentioned interpretation is appropriate. The values are different from part c, and this is due to the offset __Verify this__
+The relative risk is .87, which means that pattern 1 has 0.87 times higher risk of outcome than pattern 2. This actually means that there is greater risk in pattern 2, by approximately 13%. The Ci does not contain 1, though it is VERY close. But, since it does not contain 1, the above mentioned interpretation is appropriate. The values are different from part c, and this is due to the offset.
 
 ## H
 
-```{r}
+```{r Quasi}
 fit1_quasi <- glm(y ~ CAR + AGE + DIST + offset(log(n)), data = dat, family = quasipoisson)
 summary(fit1_quasi)
 ```
