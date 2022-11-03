@@ -80,16 +80,14 @@ sum_fit1_pois <- summary(fit1_pois)
 sum_fit1_pois
 ```
 
+
 $$
-log(\mu_i) = \beta_0+\beta_1(CAR2)+\beta_2(CAR3)+\beta_3(CAR4)+\beta_4(AGE2)+\beta_5(AGE3)+\beta_6(AGE4)+\beta_7(DIST1)+\epsilon
+log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
 $$
-$\beta_4$ is associated with a $exp(0.56769) = 1.764187$ factor increase in the RR of an individual in the AGE2 group, compared to the baseline of AGE==1, all other variables held constant. This is equivalent to a 76% increase.
 
-$\beta_5$ is associated with a $exp(0.68217) = 1.978166$ factor increase in the RR of an individual in the AGE3 group, compared to the baseline of AGE==1, all other variables held constant. This is equivalent to a 98% increase.
+$\beta_2$ is associated with a $exp(-.17674) = 0.8379976$ factor increase in the RR of the outcome when AGE increases by 1. This is better interpreted by a ~18% decrease in the RR.
 
-$\beta_6$ is associated with a $exp(2.19916) = 9.017436$ factor increase in the RR of an individual in the AGE4 group, compared to the baseline of AGE==1, all other variables held constant. This is equivalent to a 802% increase.
-
-$\beta_7$ is associated with a $exp(-2.15937) = 0.1153978$ factor increase in the RR of an individual in the DIST1 group, compared to the baseline of DIST==0, all other variables held constant. This is actually a decrease in the RR by approximately 88%.
+$\beta_3$ is associated with a $exp(.21865) = 1.244396$ factor increase in the RR of the outcome when DIST increases by 1. This is also interpreted as a 24% increase in the RR.
 
 ## E
 
@@ -131,20 +129,37 @@ I observe a general okay fit, but I would not call it necessarily good. The Pois
 Pattern 1: Car group 4 and age group 3 and district 1
 Pattern 2: Car group 4 and age group 1 and district 0
 
-$$
-log(\mu_i) = \beta_0+\beta_1(CAR2)+\beta_2(CAR3)+\beta_3(CAR4)+\beta_4(AGE2)+\beta_5(AGE3)+\beta_6(AGE4)+\beta_7(DIST1)+\epsilon
-$$
 
 $$
-\frac{\beta_0+\beta_3+\beta_5+\beta_7}{\beta_0 + \beta_3} = \beta_5 + \beta_7
+log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
+$$
+
+
+
+$$
+\frac{exp(\beta_0 + 4\beta_1 + 3\beta_2 + \beta_3)}{exp(\beta_0 + 4\beta_1 + \beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.17674) + .21865) = 0.8738645
 $$
 
 
 
 ```{r}
-sum_fit1_pois$coefficients
-
-
+L <- matrix(c(0,0,2,1), nrow=4,byrow=T)
+lrr <- t(L) %*% as.matrix(fit1_pois$coef)
+rr <- exp(lrr)
+covmat <- summary(fit1_pois)$cov.unscaled
+var.lrr <- t(L)%*%covmat%*%L
+ci.lrr <- c(lrr-(1.96*sqrt(var.lrr)), lrr+(1.96*sqrt(var.lrr)))
+ci.rr <- exp(ci.lrr)
+c(rr, ci.rr)
 ```
 
+The relative risk is .87, which means that pattern 1 has 0.87 times higher risk of outcome than pattern 2. This actually means that there is greater risk in pattern 2, by approximately 13%. The Ci does not contain 1, though it is VERY close. But, since it does not contain 1, the above mentioned interpretation is appropriate. The values are different from part c, and this is due to the offset __Verify this__
 
+## H
+
+```{r}
+fit1_quasi <- glm(y ~ CAR + AGE + DIST + offset(log(n)), data = dat, family = quasipoisson)
+summary(fit1_quasi)
+```
+
+The dispersion parameter was taken to be 0.8392, which is less than 1, so we have underdispersion.
