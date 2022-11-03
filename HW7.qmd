@@ -82,7 +82,7 @@ sum_fit1_pois
 
 
 $$
-log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
+log(\mu_i)= log(n_i) + \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
 $$
 
 $\beta_2$ is associated with a $exp(-.17674) = 0.8379976$ factor increase in the RR of the outcome when AGE increases by 1. This is better interpreted by a ~18% decrease in the RR.
@@ -128,10 +128,6 @@ I observe a general okay fit of the Poisson and Log to the observed. The Poisson
 
 Pattern 1: Car group 4 and age group 3 and district 1
 Pattern 2: Car group 4 and age group 1 and district 0
-
-$$
-log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
-$$
 
 $$
 \frac{exp(\beta_0 + 4\beta_1 + 3\beta_2 + \beta_3)}{exp(\beta_0 + 4\beta_1 + \beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.17674) + .21865) = 0.8738645

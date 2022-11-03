@@ -275,7 +275,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 <p><span class="math display">\[
-log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
+log(\mu_i)= log(n_i) + \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
 \]</span></p>
 <p><span class="math inline">\(\beta_2\)</span> is associated with a <span class="math inline">\(exp(-.17674) = 0.8379976\)</span> factor increase in the RR of the outcome when AGE increases by 1. This is better interpreted by a ~18% decrease in the RR.</p>
 <p><span class="math inline">\(\beta_3\)</span> is associated with a <span class="math inline">\(exp(.21865) = 1.244396\)</span> factor increase in the RR of the outcome when DIST increases by 1. This is also interpreted as a 24% increase in the RR.</p>
@@ -392,9 +392,6 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="g" class="level2">
 <h2 class="anchored" data-anchor-id="g">G</h2>
 <p>Pattern 1: Car group 4 and age group 3 and district 1 Pattern 2: Car group 4 and age group 1 and district 0</p>
-<p><span class="math display">\[
-log(\mu_i)= \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
-\]</span></p>
 <p><span class="math display">\[
 \frac{exp(\beta_0 + 4\beta_1 + 3\beta_2 + \beta_3)}{exp(\beta_0 + 4\beta_1 + \beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.17674) + .21865) = 0.8738645
 \]</span></p>
