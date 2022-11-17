@@ -1,0 +1,119 @@
+---
+title: "HW8"
+format: html
+editor: visual
+---
+
+```{r}
+library(lme4)
+library(reshape2)
+```
+
+```{r}
+dat <- read.csv("table11_1_modified.csv")
+
+dt.l <- melt(dat, id.vars=c("id", "group"), measure.vars=paste("week",1:8,sep=""),
+             variable.name="week", value.name="fas")
+
+dt.l$time <- recode(dt.l$week, "week1"=1, "week2"=2, "week3"=3, "week4"=4, "week5"=5, "week6"=6, "week7"=7, "week8"=8)
+
+dt.l <- dt.l[order(dt.l$id),]
+
+```
+
+
+# Question 2
+
+## Part A
+
+Consider “Model 3” in the lecture note. Your collaborator Dr. Smith Lee, a clinician,
+email you to ask you explain the random intercept and random slope in the model. Write a
+response email to Dr. Lee. Use plain language as much as possible without numerical results
+in your reply.
+
+```{r}
+fit1 <- lmer(fas ~ time + (1 + time| id), data=dt.l)
+summary(fit1)
+```
+
+In this model we are predicting the functional ability scores (FAS) of an individual. We allow for a random intercept, meaning that we expect individuals to have a random effect on the intercepts of the model, or the predicted FAS value for an individual at time = 0.
+
+We also are allowing for a random slope, meaning that we are allowing for individuals to have different effects on the slope of the model, or, in other words, an individuals effect on FAS over time changes different between individuals.
+
+## Part B
+
+Consider “Model 3” in the lecture note. You now want to study if the temporal effect
+differs by group. Consider GROUP to be a continuous variable. Assume random intercept
+and random slope for the time effect only in the model. Write down the linear mixed effects
+model. Fit the model to the provided dataset. Interpret the fixed effect for the interaction.
+In addition, what are the estimated variances of random effects? How do you interpret them?
+
+```{r}
+dt.l$group <- unclass(as.factor(dt.l$group))
+fit3 <- lmer(fas ~ time + group + time*group + (1+ time|id), data = dt.l)
+summary(fit3)
+```
+
+$$
+Y_{ij} = \beta_0 + a_i + (\beta_1 + b_i)t_{ij} + \beta_2*\text{Group} + \beta_3t_{ij}*\text{Group} + e_{ij}
+$$
+
+$$
+\text{For a given time, }t:
+\\
+\text{Group} = 1: \beta_0 + a_i + (\beta_1 + b_i + \beta_3)t + \beta_2
+\\
+\text{Group} = 0: \beta_0 + a_i (\beta_1 + b_i) t
+\\
+\text{The difference between these two is: }\beta_3t+\beta_2
+$$
+
+$$
+\text{For a given time, }t + 1:
+\\
+\text{Group} = 1: \beta_0 + a_i + (\beta_1 + b_i + \beta_3)(t+1) + \beta_2
+\\
+\text{Group} = 0: \beta_0 + a_i (\beta_1 + b_i) (t+1)
+\\
+\text{The difference between these two is: }\beta_3(t+1)+\beta_2
+$$
+
+The difference of the differences as shown above is $\neq0$, so a 1 unit increase in time changes the effect of group on FAS, by a value of $\beta_3$.
+
+The estimated variance of random effects for id is 181.966, and the variance for the random effect of time is 6.475. The variance is pretty large for for id, meaning our intercept varies a large amount between individuals. The variance for time or slope is pretty small, meaning the slope over time does not change particularly a lot between individuals.
+
+## Part C
+
+Now, add a random slope for the group effect (so there are two random slopes) to the
+model in (b). Write down the updated model. Fit the model to the provided dataset. How
+do you explain the random slope for the group effect to Dr. Lee? Compare fixed effect
+coefficients in (b) and (c). Are they the same? Now, compared with results in (b), is the
+inference for the fixed effect of the interaction changed? Explain it. In addition, what are the
+estimated variances of random effects? Which main covariate effect does vary more across
+individuals, time or group?
+
+$$
+Y_{ij} = \beta_0 + a_i + (\beta_1 + b_i)t_{ij} + (\beta_2 + c_i)*\text{Group} + \beta_3t_{ij}*\text{Group} + e_{ij}
+$$
+
+```{r}
+fit3c <- lmer(fas ~ time + group + time*group + (1+ time + group|id), data = dt.l)
+summary(fit3c)
+```
+
+To explain the random slope for group effect to Dr. Lee, I would say that each group has its own effect on slope across time. Each individual has its own slope, but for a 1 unit increase in group and time, FAS increases by 4.27.
+
+The fixed effects coefficients are somewhat similar, the first model intercept value is 17.78, and the second model is 19.39. The other estimates are pretty similar as well. They are not the same.
+
+```{r}
+library(car)
+Anova(fit3)
+Anova(fit3c)
+```
+
+The p-value for both of the interaction terms are significant, thus the inference for the interaction term does not change.
+
+The estimated variances of random effects for the intercept in the first model is 181.97, and 309.24, which are pretty different. For time, it is 6.475 and 6.487. The residual variance is nearly equal, at 27.638 and 27.622.
+
+The main covariate effect of group varies more across individuals. This is because the variance is larger for group than it is for time
+
