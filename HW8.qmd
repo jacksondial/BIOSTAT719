@@ -5,6 +5,7 @@ editor: visual
 ---
 
 ```{r}
+library(tidyverse)
 library(lme4)
 library(reshape2)
 ```
@@ -21,15 +22,11 @@ dt.l <- dt.l[order(dt.l$id),]
 
 ```
 
-
 # Question 2
 
 ## Part A
 
-Consider “Model 3” in the lecture note. Your collaborator Dr. Smith Lee, a clinician,
-email you to ask you explain the random intercept and random slope in the model. Write a
-response email to Dr. Lee. Use plain language as much as possible without numerical results
-in your reply.
+Consider "Model 3" in the lecture note. Your collaborator Dr. Smith Lee, a clinician, email you to ask you explain the random intercept and random slope in the model. Write a response email to Dr. Lee. Use plain language as much as possible without numerical results in your reply.
 
 ```{r}
 fit1 <- lmer(fas ~ time + (1 + time| id), data=dt.l)
@@ -42,11 +39,7 @@ We also are allowing for a random slope, meaning that we are allowing for indivi
 
 ## Part B
 
-Consider “Model 3” in the lecture note. You now want to study if the temporal effect
-differs by group. Consider GROUP to be a continuous variable. Assume random intercept
-and random slope for the time effect only in the model. Write down the linear mixed effects
-model. Fit the model to the provided dataset. Interpret the fixed effect for the interaction.
-In addition, what are the estimated variances of random effects? How do you interpret them?
+Consider "Model 3" in the lecture note. You now want to study if the temporal effect differs by group. Consider GROUP to be a continuous variable. Assume random intercept and random slope for the time effect only in the model. Write down the linear mixed effects model. Fit the model to the provided dataset. Interpret the fixed effect for the interaction. In addition, what are the estimated variances of random effects? How do you interpret them?
 
 ```{r}
 dt.l$group <- unclass(as.factor(dt.l$group))
@@ -62,7 +55,9 @@ $$
 \text{For a given time, }t:
 \\
 \text{Group} = 1: \beta_0 + a_i + (\beta_1 + b_i + \beta_3)t + \beta_2
-\\
+$$
+
+$$
 \text{Group} = 0: \beta_0 + a_i (\beta_1 + b_i) t
 \\
 \text{The difference between these two is: }\beta_3t+\beta_2
@@ -72,7 +67,9 @@ $$
 \text{For a given time, }t + 1:
 \\
 \text{Group} = 1: \beta_0 + a_i + (\beta_1 + b_i + \beta_3)(t+1) + \beta_2
-\\
+$$
+
+$$
 \text{Group} = 0: \beta_0 + a_i (\beta_1 + b_i) (t+1)
 \\
 \text{The difference between these two is: }\beta_3(t+1)+\beta_2
@@ -84,13 +81,7 @@ The estimated variance of random effects for id is 181.966, and the variance for
 
 ## Part C
 
-Now, add a random slope for the group effect (so there are two random slopes) to the
-model in (b). Write down the updated model. Fit the model to the provided dataset. How
-do you explain the random slope for the group effect to Dr. Lee? Compare fixed effect
-coefficients in (b) and (c). Are they the same? Now, compared with results in (b), is the
-inference for the fixed effect of the interaction changed? Explain it. In addition, what are the
-estimated variances of random effects? Which main covariate effect does vary more across
-individuals, time or group?
+Now, add a random slope for the group effect (so there are two random slopes) to the model in (b). Write down the updated model. Fit the model to the provided dataset. How do you explain the random slope for the group effect to Dr. Lee? Compare fixed effect coefficients in (b) and (c). Are they the same? Now, compared with results in (b), is the inference for the fixed effect of the interaction changed? Explain it. In addition, what are the estimated variances of random effects? Which main covariate effect does vary more across individuals, time or group?
 
 $$
 Y_{ij} = \beta_0 + a_i + (\beta_1 + b_i)t_{ij} + (\beta_2 + c_i)*\text{Group} + \beta_3t_{ij}*\text{Group} + e_{ij}
@@ -116,4 +107,3 @@ The p-value for both of the interaction terms are significant, thus the inferenc
 The estimated variances of random effects for the intercept in the first model is 181.97, and 309.24, which are pretty different. For time, it is 6.475 and 6.487. The residual variance is nearly equal, at 27.638 and 27.622.
 
 The main covariate effect of group varies more across individuals. This is because the variance is larger for group than it is for time
-

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>719HW6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="HW6_files/libs/clipboard/clipboard.min.js"></script>
+<script src="HW6_files/libs/quarto-html/quarto.js"></script>
+<script src="HW6_files/libs/quarto-html/popper.min.js"></script>
+<script src="HW6_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="HW6_files/libs/quarto-html/anchor.min.js"></script>
+<link href="HW6_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="HW6_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="HW6_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="HW6_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="HW6_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">719HW6</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">A</h3>
+<p>The saturated model has 6 parameters. 1 from the intercept, 1 from the treatment, 2 from the disease, and 2 from the interaction of disease and treatment.</p>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">B</h3>
+<p>Model 1: <span class="math inline">\(logit(p) = \beta_0 + \beta_1 * T\)</span></p>
+<p>Model 2: <span class="math inline">\(logit(p) = \beta_0 + \beta_1 * D\)</span></p>
+<p>Model 3: <span class="math inline">\(logit(p) = \beta_0 + (\beta_1*T) + (\beta_2 *D) + (\beta_3 * T*D)\)</span></p>
+</section>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c">C</h3>
+<p>Model 1 is suitable to answer question 1. Model 2 is suitable to answer question 2. Model 3 is suitable to answer question 3.</p>
+</section>
+<section id="d" class="level3">
+<h3 class="anchored" data-anchor-id="d">D</h3>
+<section id="build-df" class="level4">
+<h4 class="anchored" data-anchor-id="build-df">Build df</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span>, <span class="dv">67</span>, <span class="dv">42</span>, <span class="dv">143</span>, <span class="dv">97</span>, <span class="dv">40</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">158</span>, <span class="dv">89</span>, <span class="dv">315</span>, <span class="dv">263</span>, <span class="dv">75</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>severity <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>), <span class="dv">2</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(y, n, severity, treatment)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    y   n severity treatment
+1  51 200        0         0
+2  67 158        1         0
+3  42  89        2         0
+4 143 315        0         1
+5  97 263        1         1
+6  40  75        2         1</code></pre>
+</div>
+</div>
+</section>
+<section id="fit-models" class="level4">
+<h4 class="anchored" data-anchor-id="fit-models">Fit models</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod_1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> treatment, <span class="at">data =</span> df, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mod_2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> severity, <span class="at">data =</span> df, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mod_3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> treatment<span class="sc">*</span>severity, <span class="at">data =</span> df, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="e" class="level3">
+<h3 class="anchored" data-anchor-id="e">E</h3>
+<p>DF of the null deviance: 5</p>
+<p>DF of the residual deviance for Model 1: 4</p>
+<p>DF of the residual deviance for Model 2: 4</p>
+<p>DF of the residual deviance for Model 3: 2</p>
+</section>
+<section id="f" class="level3">
+<h3 class="anchored" data-anchor-id="f">F</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod1_sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The p-value for the model’s treatment coefficient is 0.0186188, which is statistically significant. This means the coefficient is significantly different from 0 and we can use the estimator to estimate the estimand.</p>
+<p>The odds of hospitalization increases by a factor of 1.347, or 35%, when an individual is administered Drug B compared to Drug A. Drug A is better for preventing hospitalization.</p>
+</section>
+<section id="g" class="level3">
+<h3 class="anchored" data-anchor-id="g">G</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod2_sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The p-value for the model’s severity coefficient is 0.0151081, which is statistically significant. This means the coefficient is significantly different from 0 and we can use it to estimate our parameter. It also means that severity is statistically significantly associated with hospitalization.</p>
+<p>A 1 unit increase in severity results in a 1.231 odds increase of hospitalization when comparing Drug A to Drug B, which is 23.1% increase.</p>
+</section>
+<section id="h" class="level3">
+<h3 class="anchored" data-anchor-id="h">H</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod3_sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math display">\[
+= \frac{exp(\hat{\beta_0} + \hat{\beta_2})} {exp(\hat{\beta_0} + \hat{\beta_1} + \hat{2\beta_2} + \hat{2\beta_3})} = exp(-\hat{\beta_1} - \hat{\beta_2} -\hat{2\beta_3}) = exp(-0.7032 -.511 - 2*(-.5122) ) = exp(-.1898) = 0.827
+\]</span></p>
+<p>95% CI:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Lb <span class="ot">&lt;-</span> <span class="fu">t</span>(L)<span class="sc">%*%</span>mod_3<span class="sc">$</span>coef</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>varLb <span class="ot">&lt;-</span> <span class="fu">t</span>(L)<span class="sc">%*%</span>mod3_sum<span class="sc">$</span>cov.unscaled<span class="sc">%*%</span>L</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>CILb <span class="ot">&lt;-</span> Lb <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="fl">-.05</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">sqrt</span>(varLb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in c(-1, 1) * qnorm(1 - 0.05/2) * sqrt(varLb): Recycling array of length 1 in vector-array arithmetic is deprecated.
+  Use c() or as.vector() instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in Lb + c(-1, 1) * qnorm(1 - 0.05/2) * sqrt(varLb): Recycling array of length 1 in array-vector arithmetic is deprecated.
+  Use c() or as.vector() instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(CILb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5536296 1.2382083</code></pre>
+</div>
+</div>
+</section>
+<section id="i" class="level3">
+<h3 class="anchored" data-anchor-id="i">I</h3>
+<p>I can use model 3 to answer question 3. The interaction term is significant, which means the treatment effect changes for different levels of severity, and vice versa.</p>
+<p>To show this, I will compare the effect of a change in severity in two different situations, one where treatment == 0 and one where treatment == 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod3_b <span class="ot">&lt;-</span> mod3_sum<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math display">\[
+\frac{exp(\beta_0 + \beta1*0 + \beta_2*1 + \beta_3*0*1) } {exp(\beta_0 + \beta1*0 + \beta_2*2 + \beta_3*0*2)} = \frac{0.6205}{1.0343} = 0.5999
+\]</span></p>
+<p><span class="math display">\[
+\frac{exp(\beta_0 + \beta1*1 + \beta_2*1 + \beta_3*1*1) } {exp(\beta_0 + \beta1*1 + \beta_2*2 + \beta_3*1*2)} = \frac{0.7503}{0.7494} = 1.0012
+\]</span></p>
+<p>This shows that the odds ratio between levels of severity changes differently for different levels of disease. This shows that disease severity is an effect modifier.</p>
+</section>
+<section id="j" class="level3">
+<h3 class="anchored" data-anchor-id="j">J</h3>
+<p>NO YES YES</p>
+<p>Only model 1 vs Model 3 &amp; Model 2 vs Model 3 can be compared using the LRT.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_1, mod_3, <span class="at">test =</span> <span class="st">"LRT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: cbind(y, n - y) ~ treatment
+Model 2: cbind(y, n - y) ~ treatment * severity
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+1         4    25.5436                          
+2         2     9.8977  2   15.646 0.0004004 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_2, mod_3, <span class="at">test =</span> <span class="st">"LRT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: cbind(y, n - y) ~ severity
+Model 2: cbind(y, n - y) ~ treatment * severity
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+1         4    25.2144                          
+2         2     9.8977  2   15.317 0.0004721 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The larger model is preferred in both cases since <span class="math inline">\(H_0 = \text{Smaller model is preferred}\)</span>, <span class="math inline">\(H_a: \text{Larger model is preferred}\)</span> and <span class="math inline">\(p &lt; 0.05\)</span>, so the interaction term should be included.</p>
+</section>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<section id="a-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-1">A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">52</span>, <span class="dv">57</span>, <span class="dv">55</span>, <span class="dv">50</span>, <span class="dv">50</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">99</span>, <span class="dv">108</span>, <span class="dv">76</span>, <span class="dv">81</span>, <span class="dv">90</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>force <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">150</span>, <span class="dv">350</span>), <span class="dv">2</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>newstor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Control"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">3</span>))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(y, n, force, newstor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fit2<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> newstor, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> df2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fit2<span class="fl">.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:  glm(formula = cbind(y, n - y) ~ newstor, family = binomial(link = "logit"), 
+    data = df2)
+
+Coefficients:
+     (Intercept)  newstorTreatment  
+          0.1231            0.3985  
+
+Degrees of Freedom: 5 Total (i.e. Null);  4 Residual
+Null Deviance:      10.45 
+Residual Deviance: 5.173    AIC: 38.74</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fit2<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(y, n<span class="sc">-</span>y) <span class="sc">~</span> newstor<span class="sc">*</span><span class="fu">log</span>(force), <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> df2)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>fit2<span class="fl">.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:  glm(formula = cbind(y, n - y) ~ newstor * log(force), family = binomial(link = "logit"), 
+    data = df2)
+
+Coefficients:
+                (Intercept)             newstorTreatment  
+                    0.23389                      1.97711  
+                 log(force)  newstorTreatment:log(force)  
+                   -0.02274                     -0.31862  
+
+Degrees of Freedom: 5 Total (i.e. Null);  2 Residual
+Null Deviance:      10.45 
+Residual Deviance: 0.02773  AIC: 37.6</code></pre>
+</div>
+</div>
+</section>
+<section id="b-1" class="level3">
+<h3 class="anchored" data-anchor-id="b-1">B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df2_ungrouped_left <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">rbind</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">force=</span><span class="fu">rep</span>(df2[,<span class="st">"force"</span>], df2[,<span class="st">"y"</span>]), <span class="at">n=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">force=</span><span class="fu">rep</span>(df2[,<span class="st">"force"</span>], df2[,<span class="st">"n"</span>]<span class="sc">-</span>df2[,<span class="st">"y"</span>]), <span class="at">n=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">0</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>df2_ungrouped_right <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">rbind</span>(</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">newstor=</span><span class="fu">rep</span>(df2[,<span class="st">"newstor"</span>], df2[,<span class="st">"y"</span>])),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">newstor=</span><span class="fu">rep</span>(df2[,<span class="st">"newstor"</span>], df2[,<span class="st">"n"</span>]<span class="sc">-</span>df2[,<span class="st">"y"</span>]))</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>df2_ungrouped <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df2_ungrouped_left, df2_ungrouped_right)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>df2_ungrouped<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df2_ungrouped<span class="sc">$</span>y)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>df2_ungrouped<span class="sc">$</span>newstor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df2_ungrouped<span class="sc">$</span>newstor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fit2.<span class="fl">1.2</span> <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> newstor, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> df2_ungrouped)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>fit2.<span class="fl">1.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:  glm(formula = y ~ newstor, family = binomial(link = "logit"), 
+    data = df2_ungrouped)
+
+Coefficients:
+     (Intercept)  newstorTreatment  
+          0.1231            0.3985  
+
+Degrees of Freedom: 555 Total (i.e. Null);  554 Residual
+Null Deviance:      758.6 
+Residual Deviance: 753.4    AIC: 757.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fit2.<span class="fl">2.2</span> <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> newstor <span class="sc">*</span> <span class="fu">log</span>(force), <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> df2_ungrouped)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>fit2.<span class="fl">2.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:  glm(formula = y ~ newstor * log(force), family = binomial(link = "logit"), 
+    data = df2_ungrouped)
+
+Coefficients:
+                (Intercept)             newstorTreatment  
+                    0.23389                      1.97711  
+                 log(force)  newstorTreatment:log(force)  
+                   -0.02274                     -0.31862  
+
+Degrees of Freedom: 555 Total (i.e. Null);  552 Residual
+Null Deviance:      758.6 
+Residual Deviance: 748.2    AIC: 756.2</code></pre>
+</div>
+</div>
+<p>The models give the same conclusions using grouped and ungrouped data, though some calculated values are different such as the deviances.</p>
+</section>
+<section id="c-1" class="level3">
+<h3 class="anchored" data-anchor-id="c-1">C</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>an_1 <span class="ot">&lt;-</span> <span class="fu">anova</span>(fit2<span class="fl">.1</span>, fit2<span class="fl">.2</span>, <span class="at">test =</span> <span class="st">"LRT"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>an_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: cbind(y, n - y) ~ newstor
+Model 2: cbind(y, n - y) ~ newstor * log(force)
+  Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)  
+1         4     5.1730                       
+2         2     0.0277  2   5.1452  0.07634 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pval_1 <span class="ot">&lt;-</span> an_1<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;Chi)</span><span class="st">`</span>[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>an_2 <span class="ot">&lt;-</span> <span class="fu">anova</span>(fit2.<span class="fl">1.2</span>, fit2.<span class="fl">2.2</span>, <span class="at">test =</span> <span class="st">"LRT"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>an_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: y ~ newstor
+Model 2: y ~ newstor * log(force)
+  Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)  
+1       554     753.36                       
+2       552     748.22  2   5.1452  0.07634 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pval_2 <span class="ot">&lt;-</span> an_2<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;Chi)</span><span class="st">`</span>[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>They do give the same result.</p>
+</section>
+<section id="d-1" class="level3">
+<h3 class="anchored" data-anchor-id="d-1">D</h3>
+<p><span class="math display">\[
+H_0: \text{Model 1 better than Model 2}
+\]</span></p>
+<p><span class="math display">\[
+H_a: \text{Model 2 better than Model 1}
+\]</span></p>
+<p>The p-value is not significant for either test (0.0763 &amp; 0.0763), meaning we fail to reject the null and conclude that the simpler model is better, i.e.&nbsp;we do not need to include log(force) at all in the model. It is better to use just the storage condition to predict the outcome than a model that includes storage and log(force).</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

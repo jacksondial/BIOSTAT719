@@ -1,0 +1,246 @@
+---
+title: "FinalProjectEDA"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(DataExplorer)
+```
+
+# Read in Data
+
+```{r}
+dat <- read_csv("C:/Users/jacks/Box/BIOS719_G3/Project2/CD4_Botswana.csv")
+```
+
+# Explore
+
+```{r}
+plot_missing(dat) #cd4 has 22.74% missing data values
+plot_histogram(dat)
+```
+
+```{r bmi}
+summary(dat$bmi)
+#The maximum bmi is 130.14 
+#obese is 30-39.9
+bmi_over_100 <- dat %>% filter(bmi > 100)
+# Even though there is a consistent measurement at 130.14, I think it should be removed
+# because it is just so large
+dat %>% filter(bmi < 100) %>% summary()
+# a value of 60 has been deemed reasonable for bmi
+table(dat$bmicat) #looks good
+```
+
+```{r visit_bid}
+table(dat$visit) #looks good
+length(unique(dat$bid)) #455 unique bid
+```
+
+```{r cd4}
+boxplot(dat$cd4) #looks fine to me
+boxplot(dat$basecd4) #one definite outlier and a possible other one
+dat %>% filter(basecd4 >1500) #one patient at 3663 and one at 1546 (17 rows)
+table(dat$cd4cat) #looks good
+```
+
+```{r rna}
+#this is viral load at baseline
+boxplot(dat$baserna)
+summary(dat$baserna)
+plot(dat$baserna) #seems to be a pretty clear line at about 600,000, and there are
+# 41 rows with a value of 750000 which is strange, mostly different bids too
+table(dat$rnacat) #looks good
+```
+
+```{r anemia}
+summary(dat$anemia) #119 NA
+table(dat$anemia)
+```
+
+```{r sex}
+table(dat$sex)
+```
+
+```{r}
+summary(dat$age)
+```
+
+```{r}
+table(dat$y2)
+```
+
+
+```{r CleanData}
+dat_cleaned <- dat %>% 
+  filter(bmi < 100,
+         basecd4 < 2000,
+         baserna < 600000) %>% 
+  mutate(visit2 = visit^2,
+         cd4log = log(cd4))
+
+# dat_cleaned$cd4diff <- dat_cleaned$cd4 - dat_cleaned$basecd4
+
+```
+
+
+```{r}
+library(lme4)
+
+fit7 <- lmer(cd4log ~ visit +visit2+ as.factor(cd4cat) + bmi + visit*age + as.factor(cd4cat)*bmi + as.factor(cd4cat)*sex+ as.factor(rnacat)*anemia +visit*as.factor(rnacat) + (1 + visit+ visit*as.factor(cd4cat)|bid), data =dat_cleaned)
+
+summary(fit7)
+```
+
+```{r}
+dat_to_pred1 <- data.frame(visit = 1, visit2 = 1, cd4cat = 1, bmi = 21.96712, age = 26, sex = 1,rnacat = 1, anemia = 1, bid = "B002486-8")
+predicted1 <- predict(fit7, newdata = dat_to_pred1)
+cd1t1 <- exp(predicted1)
+
+dat_to_pred12 <- data.frame(visit = 3, visit2 = 9, cd4cat = 1, bmi = 21.96712, age = 26, sex = 1,rnacat = 1, anemia = 1, bid = "B002486-8")
+predicted12 <- predict(fit7, newdata = dat_to_pred12)
+cd1t2 <- exp(predicted12)
+
+cd1t1 - cd1t2
+```
+
+```{r}
+dat_to_pred2 <- data.frame(visit = 1, visit2 = 1, cd4cat = 2, bmi = 21.96712, age = 26, sex = 1,rnacat = 1, anemia = 1, bid = "B002486-8")
+predicted2 <- predict(fit7, newdata = dat_to_pred2)
+cd2t1 <- exp(predicted2)
+
+dat_to_pred22 <- data.frame(visit = 3, visit2 = 9, cd4cat = 2, bmi = 21.96712, age = 26, sex = 1,rnacat = 1, anemia = 1, bid = "B002486-8")
+predicted22 <- predict(fit7, newdata = dat_to_pred22)
+cd2t2 <- exp(predicted22)
+
+cd2t1 - cd2t2
+```
+
+```{r}
+unique(as.numeric(row.names(ranef(fit7)$bid)))
+```
+
+
+
+
+```{r}
+ggplot(dat_cleaned, aes(x = visit, y = cd4))+
+  geom_smooth(aes(group = cd4cat, color = as.factor(cd4cat)))+
+  geom_point(aes(color = as.factor(cd4cat)))
+```
+
+
+# Aim 1
+
+To study trajectories of CD4 count over time by baseline CD4 category (CD4≤350, 350 –
+500, and >500) and identify key baseline characteristics associated with the CD4 trend.
+
+__Analysis Plan__
+
+Consider a model utilizing the longitudinal measurements of CD4 counts over time.
+Account for a possible correlation of outcomes across visits within a patient. Estimate temporal trends of CD4 counts by baseline CD4 category and assess associations between other baseline covariates and CD4 counts.
+
+```{r}
+library(lme4) #for linear mixed effects model
+```
+
+```{r}
+#Data has 5445 observations
+fit1a <- lmer(cd4 ~ visit + (1|bid) + (0 + visit|bid) + (0 + baserna|bid), data = dat_cleaned, REML = TRUE)
+summary(fit1a)
+```
+
+```{r}
+fit1b <- lmer(cd4 ~ visit + (1 + visit | bid), data = dat_cleaned)
+summary(fit1b)
+```
+
+```{r}
+dat_transformed <- dat_cleaned %>%
+  mutate(log_cd4 = log(cd4),
+         age_sq = age^2)
+```
+
+
+
+```{r}
+fit1c <- lmer(log_cd4 ~ visit + age_sq + visit*basecd4 + (1 + visit + cd4cat | bid), data = dat_transformed)
+summary(fit1c)
+
+library(car)
+Anova(fit1c)
+```
+
+
+
+
+# Aim 2
+
+To identify risk factors of AIDS progression which is defined as eligibility of ART or death due to HIV related disease. 
+
+__Analysis Plan__
+
+Fit a proper model to identify risk factors of AIDS progression [y2]
+
+```{r}
+levels(as.factor(dat_cleaned$y2)) #binary outcome
+```
+
+```{r}
+fit2a <- lmer(y2 ~ visit + (cd4diff), data = dat_cleaned)
+summary(fit2a)
+```
+
+```{r}
+last_visit_dat <- dat_cleaned %>% 
+  group_by(bid) %>% 
+  arrange(visit) %>% 
+  slice(n())
+```
+
+
+```{r}
+fit2b <- glm(y2 ~ basecd4 + baserna, family = binomial(link = "logit"), data = last_visit_dat)
+summary(fit2b)
+```
+
+
+
+
+
+```{r}
+ggplot(dat_cleaned, aes(x = visit, y = cd4diff))+
+  geom_smooth(aes(group = cd4cat, color = as.factor(cd4cat)))+
+  labs(x = "Visit",
+       y = "Difference of CD4 and Baseline CD4",
+       title = "CD4 Difference Over Time By Baseline CD4 Group",
+       color = "Baseline CD4 Group")+
+  theme(panel.grid.minor = element_blank())
+
+sex_labs <- c("Female", "Male")
+names(sex_labs) <- c(1, 2)
+
+ggplot(dat_cleaned, aes(x = visit, y = cd4diff))+
+  geom_smooth(aes(group = cd4cat, color = as.factor(cd4cat)))+
+  labs(x = "Visit",
+       y = "Difference of CD4 and Baseline CD4",
+       title = "CD4 Difference Over Time By Baseline CD4 Group",
+       color = "Baseline CD4 Group")+
+  theme(panel.grid.minor = element_blank())+
+  facet_grid(~sex, labeller = labeller(sex = sex_labs))
+
+ggplot(dat_cleaned, aes(x = visit, y = cd4diff))+
+  geom_point(aes(color = as.factor(cd4cat)), alpha = .3)+
+  theme(panel.grid.minor = element_blank())
+
+dat_cleaned1_100 <- dat_cleaned[1:150,]
+ggplot(dat_cleaned1_100, aes(x = visit, y = cd4diff))+
+  geom_smooth(aes(group = bid, color = bid), se = FALSE)+
+  facet_grid(~cd4cat)
+
+```
+
