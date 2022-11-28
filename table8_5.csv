@@ -1,0 +1,19 @@
+type,satisfaction,contact,frequency
+tower block,low,low,65
+tower block,low,high,34
+tower block,medium,low,54
+tower block,medium,high,47
+tower block,high,low,100
+tower block,high,high,100
+apartment,low,low,130
+apartment,low,high,141
+apartment,medium,low,76
+apartment,medium,high,116
+apartment,high,low,111
+apartment,high,high,191
+house,low,low,67
+house,low,high,130
+house,medium,low,48
+house,medium,high,105
+house,high,low,62
+house,high,high,104

@@ -1,0 +1,79 @@
+---
+title: "HW9"
+author: "Jackson Dial"
+date: '2022-11-27'
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries}
+library(tidyverse)
+library(VGAM)
+library(nnet)
+```
+
+```{r ReadData}
+dat <- read.csv("table8_5.csv")
+```
+
+```{r TransposeData}
+dat2 <- dat %>% pivot_wider(id_cols = c(type, contact),
+              names_from = satisfaction,
+              values_from = frequency)
+```
+
+# Question 1
+
+## Part A
+
+```{r type}
+nominal.fit1 <- vglm(cbind(high,medium,low)~type, family=multinomial, data=dat2)
+nominal.fit1a <- multinom(cbind(low,medium,high)~type, data = dat2)
+```
+
+```{r contact}
+nominal.fit2 <- vglm(cbind(high,medium,low)~contact, family=multinomial, data=dat2)
+nominal.fit2a <- multinom(cbind(low,medium,high)~contact, data = dat2)
+```
+
+```{r type+contact}
+nominal.fit3 <- vglm(cbind(high,medium,low)~type + contact, family=multinomial, data=dat2)
+nominal.fit3a <- multinom(cbind(low,medium,high)~type + contact, data = dat2)
+```
+
+```{r type:contact}
+nominal.fit4 <- vglm(cbind(high,medium,low)~type*contact, family=multinomial, data=dat2)
+nominal.fit4a <- multinom(cbind(low,medium,high)~type*contact, data = dat2)
+```
+
+```{r baseline}
+nominal.fit5 <- vglm(cbind(high,medium,low)~1, family=multinomial, data=dat2)
+nominal.fit5a <- multinom(cbind(low,medium,high)~1, data = dat2)
+```
+
+```{r comparemodels}
+summary(nominal.fit1a)
+summary(nominal.fit2a)
+summary(nominal.fit3a)
+summary(nominal.fit4a)
+summary(nominal.fit5a)
+```
+
+```{r compareagain}
+summary(nominal.fit1)
+summary(nominal.fit2)
+summary(nominal.fit3)
+summary(nominal.fit4)
+summary(nominal.fit5)
+```
+
+I think that the best model is the first model, with only type included as a variable. This is because the AIC is not much lower when the contact variable is included, either just additive or with interaction. For simplicity, the first model will be chosen.
+
+
+
+

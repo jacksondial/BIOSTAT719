@@ -1,0 +1,10 @@
+---
+title: "FinalProjectManuscript_Latex"
+author: "Jackson Dial"
+date: '2022-11-21'
+output: word_document
+---
+
+$$sk
+
+$$

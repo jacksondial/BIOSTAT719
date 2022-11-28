@@ -12,7 +12,6 @@ editor_options:
 library(tidyverse)
 ```
 
-
 ```{r ReadData}
 dat <- read_csv("table9_13.csv")
 ```
@@ -35,7 +34,7 @@ fit1_cat <- glm(cbind(y, n-y) ~ ., data = dat2, family = binomial(link = "logit"
 anova(fit1_cont, fit1_cat, test = "LRT")
 ```
 
-The continuous model fits the data better since p > .05.
+The continuous model fits the data better since p \> .05.
 
 ```{r CatglmSum}
 sum_fit1cont <- summary(fit1_cont)
@@ -56,12 +55,12 @@ A 1-unit increase in Age (changing from age group 1 to age group 2, for example)
 
 ## C
 
-Pattern 1: Car group 4 and age group 3 and district 1
-Pattern 2: Car group 4 and age group 1 and district 0
+Pattern 1: Car group 4 and age group 3 and district 1 Pattern 2: Car group 4 and age group 1 and district 0
 
 $$
 \frac{exp(\beta_0+4\beta_1+3\beta_2+\beta_3)}{exp(\beta_0+4\beta_1+\beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.210)+.259) = 0.8513
 $$
+
 ```{r CIforOR}
 L <- cbind(c(0,0, 2, 1))
 Lb <- t(L)%*%fit1_cont$coef
@@ -80,12 +79,11 @@ sum_fit1_pois <- summary(fit1_pois)
 sum_fit1_pois
 ```
 
-
 $$
 log(\mu_i)= log(n_i) + \beta_0 + \beta_1(CAR) + \beta_2(AGE) + \beta_3(DIST) +\epsilon
 $$
 
-$\beta_2$ is associated with a $exp(-.17674) = 0.8379976$ factor increase in the RR of the outcome when AGE increases by 1. This is better interpreted by a ~18% decrease in the RR.
+$\beta_2$ is associated with a $exp(-.17674) = 0.8379976$ factor increase in the RR of the outcome when AGE increases by 1. This is better interpreted by a \~18% decrease in the RR.
 
 $\beta_3$ is associated with a $exp(.21865) = 1.244396$ factor increase in the RR of the outcome when DIST increases by 1. This is also interpreted as a 24% increase in the RR.
 
@@ -99,7 +97,7 @@ sum_fit1cont
 sum_fit1_pois
 ```
 
-The logistic model seems to fit better, and it is not possible to do a LRT test because the models are not the same type of model, i.e. 
+The logistic model seems to fit better, and it is not possible to do a LRT test because the models are not the same type of model, i.e.
 
 ```{r LRT2}
 anova(fit1_cont, fit1_pois, test = "LRT")
@@ -126,8 +124,7 @@ I observe a general okay fit of the Poisson and Log to the observed. The Poisson
 
 ## G
 
-Pattern 1: Car group 4 and age group 3 and district 1
-Pattern 2: Car group 4 and age group 1 and district 0
+Pattern 1: Car group 4 and age group 3 and district 1 Pattern 2: Car group 4 and age group 1 and district 0
 
 $$
 \frac{exp(\beta_0 + 4\beta_1 + 3\beta_2 + \beta_3)}{exp(\beta_0 + 4\beta_1 + \beta_2)} = exp(2\beta_2+\beta_3) = exp(2(-.17674) + .21865) = 0.8738645
